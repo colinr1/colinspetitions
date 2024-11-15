@@ -49,4 +49,21 @@ public class PetitionController {
         petition.ifPresent(p -> p.addSignature(name, email));
         return "redirect:/petition/" + id;
     }
+
+    @GetMapping("/search")
+    public String showSearchForm() {
+        return "searchPetition";
+    }
+
+    @PostMapping("/search")
+    public String searchPetitions(@RequestParam String keyword, Model model) {
+        List<Petition> result = new ArrayList<>();
+        for (Petition petition : petitions) {
+            if (petition.getTitle().contains(keyword) || petition.getDescription().contains(keyword)) {
+                result.add(petition);
+            }
+        }
+        model.addAttribute("result", result);
+        return "searchResult";
+    }
 }
