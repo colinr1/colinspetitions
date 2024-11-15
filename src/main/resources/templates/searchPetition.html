@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <title>Search Petitions</title></head>
 <body>
-
+<a href="/">Home</a>
+<h1>Search Petitions</h1>
+<form th:action="@{/search}" method="post">
+    <label>Keyword: <input type="text" name="keyword" /></label>
+    <button type="submit">Search</button>
+</form>
 </body>
 </html>
