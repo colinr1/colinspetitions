@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('GetProject') {
             steps {
-                git 'https://github.com/colinr1/colinspetition.git'
+                git 'https://github.com/colinr1/colinspetitions.git'
             }
         }
         stage('Build') {
