@@ -9,9 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "mvn clean:clean"
-                sh "mvn dependency:copy-dependencies"
-                sh "mvn compiler:compile"
+                sh "mvn clean"
             }
         }
         stage('Package and Archive') {
@@ -25,9 +23,9 @@ pipeline {
                 }
             }
         }
-        stage('Exec') {
+        stage('Deploy') {
             steps {
-                sh "mvn exec:java"
+                sh 'docker build -f Dockerfile -t myapp .'
             }
         }
     }
