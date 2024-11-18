@@ -14,6 +14,17 @@ pipeline {
                 sh "mvn compiler: compile"
             }
         }
+        stage('Package and Archive') {
+            steps {
+                sh "mvn package"
+            }
+            post {
+                success {
+                    archiveArtifacts allowEmptyArchive: true,
+                    artifacts: '**/colinspetitions*.war'
+                }
+            }
+        }
         stage('Exec') {
             steps {
                 sh "mvn exec:java"
