@@ -4,7 +4,7 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
     <title>Create Petition</title></head>
 <body>
-<a href="/">Home</a>
+<a href="/colinspetitions">Home</a>
 <h1>Create a New Petition</h1>
 <form th:action="@{/create}" th:object="${petition}" method="post">
     <label>Title: <input type="text" th:field="*{title}" /></label><br />
